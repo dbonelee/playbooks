@@ -1,0 +1,13 @@
+---
+vcenter_hostname: "psi-nuixwra.us.house.gov"
+vcenter_datacenter: "HPSCI Datacenter"
+vcenter_validate_certs: false
+vcenter_username: "administrator@vsphere.local"
+vcenter_password: "Pass4ESXI!"
+vm_name: "ansible_1"
+vm_name_2: "ansible_2"
+vm_name_3: "ansible_3"
+
+vcenter_destination_folder: "myvm"
+vm_state: "poweron"
+vm_template: "ldsi-template"
