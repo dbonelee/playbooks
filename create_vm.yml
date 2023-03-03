@@ -3,7 +3,7 @@
   hosts: localhost
   become: false
   gather_facts: false
-  vars:
+  vars_files:
     - vars.yml
   collections:
     - community.vmware
