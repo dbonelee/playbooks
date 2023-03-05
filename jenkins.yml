@@ -1,0 +1,23 @@
+---
+hosts: 
+tasks:
+
+  - name: Copy file with owner and permissions
+    ansible.builtin.copy:
+      src: /home/jenkins/repos/jenkins
+      dest: .
+
+  - name: Copy jenkins bits
+    ansible.windows.win_copy:
+      src: ./jenkins
+      dest: c:\temp
+
+  - name: Install Java
+    win_package:
+      path: c:\temp\jenkins\jdk17.msi
+      state: present
+  
+  - name: Install Jenkins
+    win_package:
+      path: c:\temp\jenkins\jenkins.msi
+      state: present
