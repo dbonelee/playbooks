@@ -1,7 +1,5 @@
 ---
-vars:
-  hostname: "{{ lookup('env','ip_address') }}"
-hosts: "{{ hostname }}"
+
 tasks:
 
   - name: Copy file with owner and permissions
