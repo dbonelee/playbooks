@@ -2,10 +2,21 @@
 - hosts: jenkins
   tasks:
 
-  - name: Copy file with owner and permissions
+- name: Create Temp folder
+  ansible.windows.win_file:
+    path: C:\Temp
+    state: directory
+
+  - name: Copy Jenkins bits into ansible working directory
     ansible.builtin.copy:
       src: /home/jenkins/repos/jenkins
       dest: .
+
+  - name: Copy Jenkins bits to windows server
+    ansible.windows.win_copy:
+      src: ./jenkins
+      dest: c:\temp
+
 
   - name: Install Java
     win_package:
