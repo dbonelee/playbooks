@@ -1,5 +1,5 @@
 ---
-- hosts: local
+- hosts: jenkins
   tasks:
 
   - name: Copy file with owner and permissions
