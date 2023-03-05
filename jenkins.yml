@@ -1,6 +1,6 @@
 ---
-name: Hello World
-tasks:
+- hosts: 
+  tasks:
 
   - name: Copy file with owner and permissions
     ansible.builtin.copy:
