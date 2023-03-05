@@ -2,10 +2,10 @@
 - hosts: jenkins
   tasks:
 
-- name: Create Temp folder
-  ansible.windows.win_file:
-    path: C:\Temp
-    state: directory
+  - name: Create Temp folder
+    ansible.windows.win_file:
+      path: C:\Temp
+      state: directory
 
   - name: Copy Jenkins bits into ansible working directory
     ansible.builtin.copy:
