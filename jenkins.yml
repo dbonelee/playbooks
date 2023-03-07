@@ -16,7 +16,7 @@
   - name: Copy Jenkins bits to windows server
     ansible.windows.win_copy:
       src: ./jenkins
-      dest: c:\temp
+      dest: c:\temp L
 
 
   - name: Install Java
@@ -25,6 +25,6 @@
       state: present
   
   - name: Installs Jenkins on port 80
-    ansible.windows.win_shell: msiexec /i jenkins.msi /qn /norestart JAVA_HOME="C:\Program Files\Java\jdk-17" PORT=80 /L*v "logfile.txt"
+    ansible.windows.win_shell: msiexec /i "c:\temp\jenkins\jenkins.msi" /qn /norestart JAVA_HOME="C:\Program Files\Java\jdk-17" PORT=80 /L*v jenkins.log
     args:
       chdir: c:\temp\jenkins
