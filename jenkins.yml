@@ -23,7 +23,7 @@
       path: c:\temp\jenkins\jdk17.msi
       state: present
   
-  - name: Install Jenkins
-    win_package:
-      path: c:\temp\jenkins\jenkins.msi
-      state: present
+  - name: Installs Jenkins on port 80
+    ansible.windows.win_shell: msiexec /i jenkins.msi /qn /norestart JAVA_HOME="C:\Program Files\SomeJava" PORT=80 /L*v "logfile.txt"
+    args:
+      chdir: c:\temp\jenkins
