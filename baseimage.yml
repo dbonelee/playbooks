@@ -6,6 +6,7 @@
     app4: vmware
     app5: bigfix
     app6: laps
+    app7: syslog
  
   tasks:
     - name: Create Temp folder
@@ -85,6 +86,27 @@
         path: c:\temp\{{ app6 }}\LAPS.x64.msi
         state: present
 
+    - name: Copy {{ app7 }} bits
+      ansible.windows.win_copy:
+        src: ./bits/{{ app7 }}
+        dest: c:\temp
+
+    - name: install {{ app7 }}
+      ansible.windows.win_shell: c:\temp\{{ app7 }}\syslogagent.exe -install 192.168.1.100
+      args:
+        chdir: c:\temp\{{ app7 }}
+
+    - name: Copy {{ app8 }} bits
+      ansible.windows.win_copy:
+        src: ./bits/{{ app8 }}
+        dest: c:\temp
+
+    - name: install {{ app8 }}
+      ansible.windows.win_shell: c:\temp\{{ app8 }}\adobe.exe /sALL
+      args:
+        chdir: c:\temp\{{ app8 }}
+
+
     - name: copy decrapify bits
       ansible.windows.win_copy:
         src: ./bits/decrapify/decrapify.ps1
@@ -94,3 +116,10 @@
       ansible.windows.win_shell: c:\temp\decrapify.ps1 >> c:\temp\decrapify.txt
       args:
         chdir: c:\temp
+
+    - name: Cleanup Temp Folder
+      ansible.windows.win_file:
+        path: C:\Temp
+        state: absent
+
+
