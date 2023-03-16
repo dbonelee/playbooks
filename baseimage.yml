@@ -8,6 +8,11 @@
     app6: laps
  
   tasks:
+    - name: Create Temp folder
+      ansible.windows.win_file:
+        path: C:\Temp
+        state: directory
+  
     - name: copy {{ app1 }} bits
       ansible.windows.win_copy:
         src: ./bits/{{ app1 }}
