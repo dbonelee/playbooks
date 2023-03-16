@@ -7,6 +7,7 @@
     app5: bigfix
     app6: laps
     app7: syslog
+    app8: adobe
  
   tasks:
     - name: Create Temp folder
@@ -14,9 +15,9 @@
         path: C:\Temp
         state: directory
   
-    - name: copy {{ app1 }} bits
+    - name: copy All installation media
       ansible.windows.win_copy:
-        src: ./bits/{{ app1 }}
+        src: ./bits
         dest: c:\temp
 
     - name: Installs {{ app1 }} 
@@ -24,93 +25,39 @@
       args:
         chdir: c:\temp\{{ app1 }}
 
-    - name: Cleanup {{ app1 }}
-      ansible.windows.win_file:
-        path: C:\Temp\{{ app1 }}
-        state: absent
-    
-    - name: Copy {{ app2 }} bits
-      ansible.windows.win_copy:
-        src: ./bits/{{ app2 }}
-        dest: c:\temp
-
     - name: Install {{ app2 }}
       win_package:
         path: c:\temp\{{ app2 }}\GoogleChromeStandaloneEnterprise64.msi
         state: present
 
-    - name: Cleanup {{ app2 }}
-      ansible.windows.win_file:
-        path: C:\Temp\{{ app2 }}
-        state: absent
-
-    - name: Copy {{ app3 }} bits
-      ansible.windows.win_copy:
-        src: ./bits/{{ app3 }}
-        dest: c:\temp
 
     - name: Install {{ app3 }}
       win_package:
         path: c:\temp\{{ app3 }}\Firefox.msi
         state: present
 
-    - name: Cleanup {{ app3 }}
-      ansible.windows.win_file:
-        path: C:\Temp\{{ app3 }}
-        state: absent
-
-
-
-    - name: Cleanup {{ app4 }}
-      ansible.windows.win_file:
-        path: C:\Temp\{{ app4 }}
-        state: absent
-
-    - name: Copy {{ app5 }} 
-      ansible.windows.win_copy:
-        src: ./bits/{{ app5 }}
-        dest: c:\temp
 
     - name: install {{ app5 }}
       ansible.windows.win_shell: c:\temp\{{ app5 }}\BigFix-BES-Client-10.0.7.52.exe /S /v/qn
       args:
         chdir: c:\temp\{{ app5 }}
 
-    - name: Copy {{ app6 }} bits
-      ansible.windows.win_copy:
-        src: ./bits/{{ app6 }}
-        dest: c:\temp
-
     - name: Install {{ app6 }}
       win_package:
         path: c:\temp\{{ app6 }}\LAPS.x64.msi
         state: present
 
-    - name: Copy {{ app7 }} bits
-      ansible.windows.win_copy:
-        src: ./bits/{{ app7 }}
-        dest: c:\temp
 
     - name: install {{ app7 }}
       ansible.windows.win_shell: c:\temp\{{ app7 }}\syslogagent.exe -install 192.168.1.100
       args:
         chdir: c:\temp\{{ app7 }}
 
-    - name: Copy {{ app8 }} bits
-      ansible.windows.win_copy:
-        src: ./bits/{{ app8 }}
-        dest: c:\temp
-
     - name: install {{ app8 }}
       ansible.windows.win_shell: c:\temp\{{ app8 }}\adobe.exe /sALL
       args:
         chdir: c:\temp\{{ app8 }}
 
-
-    - name: copy decrapify bits
-      ansible.windows.win_copy:
-        src: ./bits/decrapify/decrapify.ps1
-        dest: c:\temp
 
     - name: Let's decrapify this image
       ansible.windows.win_shell: c:\temp\decrapify.ps1 >> c:\temp\decrapify.txt
