@@ -1,4 +1,5 @@
 - hosts: win
+  gather_facts: false
   vars:
     app1: office2019
     app2: chrome
