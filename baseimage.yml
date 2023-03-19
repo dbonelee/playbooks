@@ -11,12 +11,6 @@
     syslog:  "{{ lookup('env','syslog') }}"
  
   tasks:
-
-    - name: Create Temp folder
-      ansible.windows.win_file:
-        path: C:\Ansible
-        state: directory
-
     - name: Create Temp folder
       ansible.windows.win_file:
         path: C:\Temp
@@ -27,39 +21,25 @@
         src: ./bits/
         dest: c:\temp
 
-    - name: Register {{ app1 }}
-      stat:
-        path: c:\ansible\{{ app1 }}.txt
-      register: register_name
-
     - name: Installs {{ app1 }} 
-      ansible.windows.win_shell: C:\temp\{{ app1 }}\installoffice2019.cmd >> C:\Ansible\{{ app1 }}.txt
+      ansible.windows.win_shell: C:\temp\{{ app1 }}\installoffice2019.cmd >> C:\temp\{{ app1 }}.txt
       args:
         chdir: c:\temp\{{ app1 }}
-      when: not register_name.stat.exists
 
     - name: Install {{ app2 }}
       win_package:
         path: c:\temp\{{ app2 }}\GoogleChromeStandaloneEnterprise64.msi
         state: present
 
-    - name: Create Chrome Marker
-      ansible.windows.win_file:
-        path: C:\Ansible\chrome.txt
-        state: file
 
     - name: Install {{ app3 }}
       win_package:
         path: c:\temp\{{ app3 }}\Firefox.msi
         state: present
 
-    - name: Create Firefox Marker
-      ansible.windows.win_file:
-        path: C:\Ansible\firefox.txt
-        state: file
 
     - name: install {{ app5 }}
-      ansible.windows.win_shell: c:\temp\{{ app5 }}\BigFix-BES-Client-10.0.7.52.exe /S /v/qn >> c:\ansible\bigfix.txt
+      ansible.windows.win_shell: c:\temp\{{ app5 }}\BigFix-BES-Client-10.0.7.52.exe /S /v/qn
       args:
         chdir: c:\temp\{{ app5 }}
 
@@ -68,14 +48,9 @@
         path: c:\temp\{{ app6 }}\LAPS.x64.msi
         state: present
 
-    - name: Create LAPS Marker
-      ansible.windows.win_file:
-        path: C:\Ansible\laps.txt
-        state: file
-
 
     - name: install {{ app7 }}
-      ansible.windows.win_shell: c:\temp\{{ app7 }}\syslogagent.exe -install {{ syslog }} >> c:\ansible\syslog.txt
+      ansible.windows.win_shell: c:\temp\{{ app7 }}\syslogagent.exe -install {{ syslog }}
       args:
         chdir: c:\temp\{{ app7 }}
 
