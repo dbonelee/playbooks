@@ -61,11 +61,6 @@
         chdir: c:\temp\{{ app8 }}
 
 
-    - name: Let's decrapify this image
-      ansible.windows.win_shell: c:\temp\decrapify\decrapify.ps1 >> c:\temp\decrapify.txt
-      args:
-        chdir: c:\temp
-
     - name: Cleanup Temp Folder
       ansible.windows.win_file:
         path: C:\Temp
