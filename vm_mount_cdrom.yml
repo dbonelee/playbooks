@@ -1,0 +1,22 @@
+---
+- name: deploy {{ vm_name }} from template demo
+  hosts: localhost
+  become: false
+  gather_facts: false
+  vars:
+    iso: "{{ lookup('env','iso') }}"
+  vars_files:
+    - vars.yml
+  collections:
+    - community.vmware
+  tasks:
+    - name: mount iso {{ iso }}
+      vmware_guest:
+        hostname: "{{ vcenter_host }}"
+        username: "{{ username_secret }}"
+        password: "{{ password_secret }}"
+        validate_certs: "false"
+        name: "{{ vm_name }}"
+        cdrom:
+          type: iso
+          iso_path: "[vmware_1][iso] approps2023.iso"
