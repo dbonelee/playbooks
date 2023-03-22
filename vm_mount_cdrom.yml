@@ -18,5 +18,8 @@
         validate_certs: "false"
         name: "{{ vm_name }}"
         cdrom:
+        - controller_number: 0
+          unit_number: 0
+          state: present
           type: iso
-          iso_path: "[vmware_1][iso] approps2023.iso"
+          iso_path: "[vmware_1] iso/approps2023.iso"
