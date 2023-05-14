@@ -11,7 +11,7 @@
       - size_tb: 1
         type: thin
         state: present
-        controller_type: lsilogicsas
+        scsci_type: lsilogicsas
         scsi_controller: 0
         unit_number: 1
         disk_mode: 'persistent'
