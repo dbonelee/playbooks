@@ -1,6 +1,5 @@
 ---
-- name: install this 
-  hosts: any
+- hosts: any
   vars_files:
     - vars.yml
   roles:
