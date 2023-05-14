@@ -1,4 +1,7 @@
 ---
 - name: install this 
+  hosts: any
+  vars_file:
+    - vars.yml
   roles:
     - "{{ role }}"
