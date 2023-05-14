@@ -1,0 +1,12 @@
+---
+# tasks file for power_vm
+    - name: power {{ power }}
+      vmware_guest:
+        hostname: "{{ vcenter_host }}"
+        username: "{{ username_secret }}"
+        password: "{{ password_secret }}"
+        validate_certs: "false"
+        datacenter: "{{ datacenter_name }}"
+        cluster: "{{ cluster_name }}"
+        name: "{{ vm_name }}"
+        state: "{{ power }}"

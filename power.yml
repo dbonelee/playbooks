@@ -1,0 +1,5 @@
+---
+- name: Power {{ power }} vm
+  hosts: local
+  roles:
+    - power_vm
