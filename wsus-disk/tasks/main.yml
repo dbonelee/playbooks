@@ -6,7 +6,7 @@
     username: "{{ username_secret }}"
     password: "{{ password_secret }}"
     datacenter: "{{ datacenter_name }}"
-    uuid: "{{ vm_name }}"
+    name: "{{ vm_name }}"
     disk:
       - size_tb: 1
         type: thin
