@@ -12,7 +12,7 @@
         type: thin
         datastore: "{{ datastore }}"
         state: present
-        scsi_controller: 1
+        scsi_controller: 0
         unit_number: 1
         scsi_type: 'lsilogic'
         disk_mode: 'independent_persistent'
