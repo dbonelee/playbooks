@@ -10,8 +10,8 @@
     disk:
       - size_tb: 1
         type: thin
-        datastore: "{{ datastore }}"
         state: present
+        controller_type: lsilogicsas
         scsi_controller: 0
         unit_number: 1
         disk_mode: 'persistent'
