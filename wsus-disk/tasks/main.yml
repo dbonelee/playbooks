@@ -2,7 +2,7 @@
 # tasks file for wsus-disk
 - name: Add disks to virtual machine using UUID
   community.vmware.vmware_guest_disk:
-    hostname: "{{ vcenter_hostname }}"
+    hostname: "{{ vcenter_host }}"
     username: "{{ username_secret }}"
     password: "{{ password_secret }}"
     datacenter: "{{ datacenter_name }}"
