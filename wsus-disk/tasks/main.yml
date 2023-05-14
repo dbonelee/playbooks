@@ -15,4 +15,4 @@
         scsi_controller: 0
         unit_number: 1
         scsi_type: 'lsilogic'
-        disk_mode: 'dependent'
+        disk_mode: 'persistent'
