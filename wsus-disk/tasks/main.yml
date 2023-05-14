@@ -1,6 +1,6 @@
 ---
 # tasks file for wsus-disk
-- name: Add disks to virtual machine using UUID
+- name: Add disks to virtual machine using {{ vm_name }}
   community.vmware.vmware_guest_disk:
     hostname: "{{ vcenter_host }}"
     username: "{{ username_secret }}"
@@ -13,6 +13,6 @@
         datastore: "{{ datastore }}"
         state: present
         scsi_controller: 0
-        unit_number: 2
+        unit_number: 1
         scsi_type: 'lsilogic'
         disk_mode: 'independent_persistent'
