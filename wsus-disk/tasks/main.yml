@@ -10,9 +10,9 @@
     disk:
       - size_tb: 1
         type: thin
-        datastore: datacluster0
+        datastore: "{{ datastore }}"
         state: present
         scsi_controller: 0
         unit_number: 2
-        scsi_type: 'LSI Logic SAS'
+        scsi_type: 'lsilogic'
         disk_mode: 'independent_persistent'
