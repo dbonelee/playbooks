@@ -1,0 +1,10 @@
+---
+
+select volume 0
+assign letter=Z
+select disk 1
+attributes cleared successfully
+online disk
+convert gpt
+format fs=NTFS label="WSUS" quick
+assign letter=D
