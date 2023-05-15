@@ -19,3 +19,19 @@
   ansible.windows.win_file:
     path: C:\Temp\{{ app }}
     state: absent
+
+- name: Install WSUS Server Role
+  ansible.windows.win_feature:
+    name: UpdateServices
+    include_management_tools: yes
+    state: present
+
+- name: Create {{ app }} Directory
+  ansible.windows.win_file:
+    path: d:\WSUS
+    state: directory
+
+- name: Configure WSUS
+  ansible.windows.win_shell: .\wsusutil.exe postinstall CONTENT_DIR=D:\WSUS
+  args:
+    chdir: C:\Program Files\Update Services\Tools
