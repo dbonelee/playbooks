@@ -3,4 +3,4 @@
   vars_files:
     - vars.yml
   roles:
-    - 'wsus_disk_config'
+    - wsusdiskconfig
