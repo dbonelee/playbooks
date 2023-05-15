@@ -7,7 +7,7 @@
 
 - name: Copy {{ name }}
   ansible.windows.win_copy:
-    src: ../files/*
+    src: ../files/
     dest: c:\temp\{{ app }}
 
 - name: Installs {{ name }} 
