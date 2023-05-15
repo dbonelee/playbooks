@@ -1,10 +1,10 @@
----
-
 select volume 0
 assign letter=Z
 select disk 1
-attributes cleared successfully
+attributes disk clear readonly
 online disk
+clean
 convert gpt
+create partition primary
 format fs=NTFS label="WSUS" quick
 assign letter=D
